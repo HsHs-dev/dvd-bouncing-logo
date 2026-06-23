@@ -4,6 +4,8 @@ function love.load()
 	-- If width or height is 0, setMode will use the width and height of the desktop.
 	love.window.setMode(0, 0, screen_opts)
 
+	COLLIDED = false
+
 	-- logo settings
 	LOGO = love.graphics.newImage("dvd-video.png")
 	SCALE = 0.5
@@ -27,6 +29,10 @@ function love.update(dt)
 end
 
 function love.draw()
+	if COLLIDED then
+		change_color()
+		COLLIDED = false
+	end
 	love.graphics.draw(LOGO, X, Y, 0, SX, SY, (LOGO_WIDTH / 2) / SX, (LOGO_HEIGHT / 2) / SY)
 end
 
@@ -42,23 +48,34 @@ function collision_detection()
 
 	-- detect vertical collsion
 	if Y - half_h <= 0 then
+		COLLIDED = true
 		Y = half_h
 		DY = -DY
 	end
 
 	if Y + half_h >= HEIGHT then
+		COLLIDED = true
 		Y = HEIGHT - half_h
 		DY = -DY
 	end
 
 	-- detect horizontal collsion
 	if X - half_w <= 0 then
+		COLLIDED = true
 		X = half_w
 		DX = -DX
 	end
 
 	if X + half_w >= WIDTH then
+		COLLIDED = true
 		X = WIDTH - half_w
 		DX = -DX
 	end
+end
+
+function change_color()
+	r = math.random()
+	g = math.random()
+	b = math.random()
+	love.graphics.setColor(r, g, b, 0.7)
 end
