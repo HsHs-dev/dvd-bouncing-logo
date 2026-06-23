@@ -8,14 +8,22 @@ function love.load()
 	LOGO = love.graphics.newImage("dvd-video.png")
 	LOGO_WIDTH = LOGO:getWidth()
 	LOGO_HEIGHT = LOGO:getHeight()
+	WIDTH = love.graphics.getWidth()
+	HEIGHT = love.graphics.getHeight()
+	X, Y = WIDTH / 2, HEIGHT / 2
+end
+
+function love.update(dt)
+	local speed = 240
+	local dx, dy = speed, speed
+	X = X + dx * dt
+	Y = Y + dy * dt
 end
 
 function love.draw()
 	local r, g, b = love.math.colorFromBytes(132, 163, 238)
 	love.graphics.setBackgroundColor(r, g, b)
-	WIDTH = love.graphics.getWidth()
-	HEIGHT = love.graphics.getHeight()
-	love.graphics.draw(LOGO, WIDTH / 2, HEIGHT / 2, 0, 0.5, 0.5, LOGO_WIDTH / 2, LOGO_HEIGHT / 2)
+	love.graphics.draw(LOGO, X, Y, 0, 0.5, 0.5, LOGO_WIDTH / 2, LOGO_HEIGHT / 2)
 end
 
 function love.keypressed(key)
