@@ -19,7 +19,7 @@ git clone https://github.com/HsHs-dev/dvd-bouncing-logo.git
 navigate to the project directory
 
 ```bash
-cd dvd-bouncing
+cd dvd-bouncing-logo
 ```
 
 and run it using the following command
