@@ -1,14 +1,18 @@
--- -1 to use adaptive vsync (where supported)
-
 function love.load()
-	local screen_opts = { fullscreen = true, borderless = false, vsync = 1, centered = false }
+	local screen_opts = { fullscreen = true, borderless = false, vsync = 1, centered = true }
 	love.window.setTitle("DVD Bouncing")
 	-- If width or height is 0, setMode will use the width and height of the desktop.
 	love.window.setMode(0, 0, screen_opts)
+
+	-- logo settings
 	LOGO = love.graphics.newImage("dvd-video.png")
 	SCALE = 0.5
-	LOGO_WIDTH = LOGO:getWidth() * SCALE
-	LOGO_HEIGHT = LOGO:getHeight() * SCALE
+	LOGO_WIDTH = 250
+	LOGO_HEIGHT = 120
+	-- scalling values
+	SX = LOGO_WIDTH / LOGO:getWidth()
+	SY = LOGO_HEIGHT / LOGO:getHeight()
+
 	WIDTH = love.graphics.getWidth()
 	HEIGHT = love.graphics.getHeight()
 	X, Y = WIDTH / 2, HEIGHT / 2
@@ -23,7 +27,7 @@ function love.update(dt)
 end
 
 function love.draw()
-	love.graphics.draw(LOGO, X, Y, 0, SCALE, SCALE, LOGO_WIDTH / 2, LOGO_HEIGHT / 2)
+	love.graphics.draw(LOGO, X, Y, 0, SX, SY, (LOGO_WIDTH / 2) / SX, (LOGO_HEIGHT / 2) / SY)
 end
 
 function love.keypressed(key)
