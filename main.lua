@@ -77,5 +77,6 @@ function change_color()
 	r = math.random()
 	g = math.random()
 	b = math.random()
-	love.graphics.setColor(r, g, b, 0.7)
+	local alpha = 0.7
+	love.graphics.setColor(r, g, b, alpha)
 end
