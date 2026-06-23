@@ -29,4 +29,5 @@ love .
 ```
 
 > [!NOTE]
-> Press `space` or `escape` to quit, if you would like to change the logo opacity or moving speed change `SPEED` or `alpha` in `main.lua`
+> Press `space` or `escape` to quit.
+> If you would like to change the logo _opacity_ or moving _speed_, change `SPEED` or `alpha` in `main.lua`
